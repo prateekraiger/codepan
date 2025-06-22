@@ -3,6 +3,7 @@ import Sidebar from "./Sidebar";
 import Header from "./Header";
 import Footer from "./Footer";
 import Button from "../components/Button";
+import CodeCard from "../components/CodeCard";
 
 const COMPONENTS = {
   button: {
@@ -52,10 +53,12 @@ const MainLayout = () => {
               {comp.preview}
             </div>
           ) : (
-            <div className="relative bg-gray-900 text-green-200 rounded p-4">
-              <pre className="overflow-x-auto text-sm">
-                <code>{comp.code}</code>
-              </pre>
+            <div className="relative">
+              <CodeCard
+                code={comp.code}
+                filename={`${comp.name}.jsx`}
+                language="jsx"
+              />
               <button
                 className="absolute top-2 right-2 px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 text-xs"
                 onClick={handleCopy}
