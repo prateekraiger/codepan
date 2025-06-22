@@ -2,8 +2,23 @@ import React from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 
+const customStyle = {
+  background: "transparent",
+  fontSize: 13,
+  padding: 0,
+  margin: 0,
+  fontFamily:
+    'Fira Mono, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
+};
+
+const customPrismOverrides = `
+  .bg-slate-900 .token.tag, .bg-slate-900 .token.keyword { color: #ec4899 !important; } /* Tailwind pink-500 */
+  .bg-slate-900 .token.punctuation { color: #94a3b8 !important; } /* Tailwind slate-400 */
+`;
+
 const CodeCard = ({ code, filename = "Component.jsx", language = "jsx" }) => (
-  <div className="relative rounded-lg bg-slate-900 p-2">
+  <div className="relative rounded-lg bg-slate-900 p-2 shadow-lg border border-slate-800">
+    <style>{customPrismOverrides}</style>
     <div className="relative flex text-center">
       <div className="flex pl-3.5 pt-3">
         <svg
@@ -36,12 +51,7 @@ const CodeCard = ({ code, filename = "Component.jsx", language = "jsx" }) => (
       <SyntaxHighlighter
         language={language}
         style={vscDarkPlus}
-        customStyle={{
-          background: "transparent",
-          fontSize: 13,
-          padding: 0,
-          margin: 0,
-        }}
+        customStyle={customStyle}
         wrapLongLines
         showLineNumbers={false}
         PreTag="div"
