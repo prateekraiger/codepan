@@ -49,7 +49,7 @@ const backgrounds = [
 ];
 
 const Backgrounds = () => {
-  const [preview, setPreview] = useState(null);
+  const [activeBg, setActiveBg] = useState(null);
   const [codeModal, setCodeModal] = useState(null);
   const [copied, setCopied] = useState(false);
 
@@ -59,42 +59,42 @@ const Backgrounds = () => {
     setTimeout(() => setCopied(false), 1200);
   };
 
+  // Find the active background component
+  const ActiveBgComponent = activeBg
+    ? backgrounds.find((bg) => bg.name === activeBg)?.Component
+    : null;
+
   return (
-    <div className="flex flex-col min-h-screen bg-white">
-      <Header />
-      <main className="flex-1 p-8 pt-24">
-        <h1 className="text-3xl font-bold mb-6">Tailwind Backgrounds</h1>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
-          {backgrounds.map(({ name, Component, code }) => (
-            <BgCards
-              key={name}
-              title={name}
-              description={"Preview of " + name}
-              preview={
-                <div className="w-full aspect-[3/1] h-32 rounded-lg overflow-hidden flex items-center justify-center relative">
-                  <Component fullPage={false} />
-                </div>
-              }
-              onPreview={() => setPreview({ name, Component })}
-              onCode={() => setCodeModal({ name, code })}
-            />
-          ))}
+    <div className="flex flex-col min-h-screen bg-white relative">
+      {/* Render the selected background as a full-page background */}
+      {ActiveBgComponent && (
+        <div className="fixed inset-0 w-full h-full z-0 pointer-events-none">
+          <ActiveBgComponent fullPage />
         </div>
-        {preview && (
-          <div className="fixed inset-0 z-40 flex flex-col">
-            <div className="absolute inset-0">
-              <preview.Component fullPage />
-            </div>
-            <div className="relative z-50 flex flex-col items-center justify-center h-full">
-              <button
-                className="mt-8 px-6 py-2 bg-white/80 text-blue-700 font-bold rounded shadow hover:bg-white"
-                onClick={() => setPreview(null)}
-              >
-                Close Preview
-              </button>
-            </div>
+      )}
+      <Header />
+      <main className="flex-1 p-8 pt-24 flex flex-col items-center justify-center relative z-10">
+        <h1 className="text-5xl font-extrabold mb-10 text-transparent bg-clip-text bg-gradient-to-r from-purple-500 via-blue-400 to-indigo-600 drop-shadow-lg text-center tracking-tight">
+          Tailwind Backgrounds
+        </h1>
+        <div className="w-full flex justify-center">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {backgrounds.map(({ name, Component, code }) => (
+              <BgCards
+                key={name}
+                title={name}
+                description={"Preview of " + name}
+                preview={
+                  <div className="w-full h-32 rounded-lg overflow-hidden flex items-center justify-center relative">
+                    <Component fullPage={false} />
+                  </div>
+                }
+                onPreview={() => setActiveBg(name)}
+                onCode={() => setCodeModal({ name, code })}
+              />
+            ))}
           </div>
-        )}
+        </div>
         {codeModal && (
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
             <div className="bg-white rounded-lg shadow-lg p-6 max-w-lg w-full relative">
