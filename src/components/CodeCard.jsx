@@ -44,8 +44,9 @@ const CodeCard = ({ code, filename = "Component.jsx", language = "jsx" }) => (
         }}
         wrapLongLines
         showLineNumbers={false}
+        PreTag="div"
       >
-        {code}
+        {String(code)}
       </SyntaxHighlighter>
     </div>
   </div>
