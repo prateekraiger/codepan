@@ -21,15 +21,18 @@ const Sidebar = ({ selected, onSelect }) => {
 
   return (
     <aside
-      className="bg-gray-100 border-r w-64 min-h-screen p-4 fixed md:static z-20 md:z-auto top-16 left-0 transition-transform md:translate-x-0 -translate-x-full md:block md:w-64 w-3/4 h-full md:h-auto mt-0"
+      className="bg-[linear-gradient(180deg,#18181b_0%,#23272f_100%)] border-r border-gray-800 w-64 min-h-screen p-4 fixed md:static z-20 md:z-auto top-16 left-0 transition-transform md:translate-x-0 -translate-x-full md:block md:w-64 w-3/4 h-full md:h-auto mt-0 shadow-xl shadow-black/30 backdrop-blur-md bg-opacity-90"
       id="sidebar"
+      style={{ boxShadow: "0 4px 32px 0 #0004, 0 1.5px 0 0 #23272f inset" }}
     >
-      <h2 className="text-xl font-bold mb-6">Components</h2>
+      <h2 className="text-xl font-bold mb-6 text-gray-100 border-b border-gray-800 pb-2">
+        Components
+      </h2>
       <ul>
         {components.map((section) => (
           <li key={section.key}>
             <button
-              className="w-full text-left px-3 py-2 rounded mb-1 font-bold hover:bg-blue-100 transition-colors flex justify-between items-center"
+              className="w-full text-left px-3 py-2 rounded mb-1 font-bold bg-gray-900/80 hover:bg-gray-900/90 hover:text-blue-400 text-gray-200 transition-colors flex justify-between items-center border border-transparent hover:border-gray-700"
               onClick={() => toggleSection(section.key)}
               type="button"
             >
@@ -41,8 +44,10 @@ const Sidebar = ({ selected, onSelect }) => {
                 {section.children.map((comp) => (
                   <li key={comp.key}>
                     <button
-                      className={`w-full text-left px-3 py-2 rounded mb-1 hover:bg-blue-100 transition-colors ${
-                        selected === comp.key ? "bg-blue-200 font-semibold" : ""
+                      className={`w-full text-left px-3 py-2 rounded mb-1 transition-colors text-gray-200 hover:bg-gray-800/60 hover:text-blue-400 border border-transparent hover:border-gray-700 ${
+                        selected === comp.key
+                          ? "bg-gray-900/80 text-blue-400 font-semibold border-blue-900"
+                          : ""
                       }`}
                       onClick={() => onSelect(comp.key)}
                     >

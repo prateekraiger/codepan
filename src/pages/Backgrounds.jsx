@@ -65,7 +65,7 @@ const Backgrounds = () => {
     : null;
 
   return (
-    <div className="flex flex-col min-h-screen bg-white relative">
+    <div className="flex flex-col min-h-screen bg-neutral-950 relative">
       {/* Render the selected background as a full-page background */}
       {ActiveBgComponent && (
         <div className="fixed inset-0 w-full h-full z-0 pointer-events-none">
@@ -74,7 +74,7 @@ const Backgrounds = () => {
       )}
       <Header />
       <main className="flex-1 p-8 pt-24 flex flex-col items-center justify-center relative z-10">
-        <h1 className="text-5xl font-extrabold mb-10 text-transparent bg-clip-text bg-gradient-to-r from-purple-500 via-blue-400 to-indigo-600 drop-shadow-lg text-center tracking-tight">
+        <h1 className="text-5xl font-extrabold mb-10 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-blue-400 to-indigo-500 drop-shadow-lg text-center tracking-tight">
           Tailwind Backgrounds
         </h1>
         <div className="w-full flex justify-center">
@@ -96,8 +96,8 @@ const Backgrounds = () => {
           </div>
         </div>
         {codeModal && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
-            <div className="bg-white rounded-lg shadow-lg p-6 max-w-lg w-full relative">
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60">
+            <div className="bg-neutral-900 rounded-lg shadow-lg p-6 max-w-lg w-full relative text-slate-100">
               <h2 className="text-lg font-bold mb-2">{codeModal.name} Code</h2>
               <CodeCard
                 code={codeModal.code}
@@ -110,7 +110,7 @@ const Backgrounds = () => {
                 {copied ? "Copied!" : "Copy Code"}
               </button>
               <button
-                className="mt-4 px-4 py-2 bg-gray-300 text-gray-800 rounded hover:bg-gray-400 text-sm font-semibold"
+                className="mt-4 px-4 py-2 bg-gray-700 text-white rounded hover:bg-gray-700 text-sm font-semibold"
                 onClick={() => setCodeModal(null)}
               >
                 Close
