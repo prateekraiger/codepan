@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { Copy, Check } from "lucide-react";
 
 const customStyle = {
   background: "transparent",
@@ -39,17 +40,17 @@ const CodeCard = ({ code, filename = "Component.jsx", language = "jsx" }) => {
           </span>
         </div>
         <button
-          className="relative px-2 py-1 text-xs text-slate-200 bg-slate-700 rounded hover:bg-slate-600 transition ml-2"
+          className="relative flex items-center justify-center p-2 text-slate-300 bg-slate-700 rounded hover:bg-slate-600 transition ml-2 group"
           onClick={handleCopy}
           aria-label="Copy code"
         >
           {copied ? (
-            <span className="text-green-400">Copied!</span>
+            <Check size={18} className="text-green-400 transition-all" />
           ) : (
-            <span>Copy</span>
+            <Copy size={18} className="transition-all" />
           )}
-          <span className="absolute -top-7 left-1/2 -translate-x-1/2 text-xs bg-slate-800 text-slate-200 px-2 py-1 rounded shadow pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity">
-            Copy to clipboard
+          <span className="absolute -top-8 left-1/2 -translate-x-1/2 text-xs bg-slate-800 text-slate-200 px-2 py-1 rounded shadow pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+            {copied ? "Copied!" : "Copy to clipboard"}
           </span>
         </button>
       </div>

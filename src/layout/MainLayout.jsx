@@ -44,7 +44,7 @@ const MainLayout = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-white">
+    <div className="flex flex-col min-h-screen">
       <Header />
       <div className="flex flex-1 pt-16">
         <Sidebar selected={selected} onSelect={setSelected} />
@@ -79,12 +79,6 @@ const MainLayout = () => {
                 filename={`${comp.name}.jsx`}
                 language="jsx"
               />
-              <button
-                className="absolute top-2 right-2 px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 text-xs"
-                onClick={handleCopy}
-              >
-                Copy
-              </button>
             </div>
           )}
         </main>
