@@ -39,10 +39,6 @@ const MainLayout = () => {
   const [tab, setTab] = useState("preview");
   const comp = COMPONENTS[selected];
 
-  const handleCopy = () => {
-    navigator.clipboard.writeText(comp.code);
-  };
-
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
