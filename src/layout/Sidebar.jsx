@@ -21,7 +21,7 @@ const Sidebar = ({ selected, onSelect }) => {
 
   return (
     <aside
-      className="bg-[linear-gradient(180deg,#18181b_0%,#23272f_100%)] border-r border-gray-800 w-64 min-h-screen p-4 fixed md:static z-20 md:z-auto top-16 left-0 transition-transform md:translate-x-0 -translate-x-full md:block md:w-64 w-3/4 h-full md:h-auto mt-0 shadow-xl shadow-black/30 backdrop-blur-md bg-opacity-90"
+      className="bg-[linear-gradient(180deg,#18181b_0%,#23272f_100%)] border-r border-gray-800 w-64 min-h-screen p-4 fixed md:static z-20 md:z-auto top-16 left-0 transition-transform md:translate-x-0 -translate-x-full md:block md:w-64  h-full md:h-auto mt-0 shadow-xl shadow-black/30 backdrop-blur-md bg-opacity-90"
       id="sidebar"
       style={{ boxShadow: "0 4px 32px 0 #0004, 0 1.5px 0 0 #23272f inset" }}
     >
