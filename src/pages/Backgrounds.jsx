@@ -13,36 +13,150 @@ const backgrounds = [
   {
     name: "Black Background",
     Component: Blackbg,
-    code: `<div className="relative h-full w-full bg-black">
-  <div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]"></div>
-  <div className="absolute left-0 right-0 top-[-10%] h-[1000px] w-[1000px] rounded-full bg-[radial-gradient(circle_400px_at_50%_300px,#fbfbfb36,#000)]"></div>
-</div>`,
+    code: `import React from "react";
+
+const BlackBackground = () => {
+  return (
+    <div className="relative h-full w-full bg-black">
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]"></div>
+    </div>
+  );
+};
+
+export default BlackBackground;`,
   },
   {
     name: "White Grid Background",
     Component: WhiteGridBg,
-    code: `<div className="relative h-full w-full">
-  <div className="absolute inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]"></div>
-</div>`,
+    code: `import React from "react";
+
+const WhiteGridBackground = () => {
+  return (
+    <div className="relative h-full w-full">
+      <div className="absolute inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]"></div>
+    </div>
+  );
+};
+
+export default WhiteGridBackground;`,
   },
   {
     name: "Purple Background",
     Component: PurpleBg,
-    code: `<div className="relative h-full w-full">
-  <div className="absolute inset-0 -z-10 h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)]"></div>
-</div>`,
+    code: `import React from "react";
+
+const PurpleBackground = () => {
+  return (
+    <div className="relative h-full w-full">
+      <div className="absolute inset-0 -z-10 h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)]"></div>
+    </div>
+  );
+};
+
+export default PurpleBackground;`,
   },
   {
     name: "Blue Grid Background",
     Component: BlueGridBg,
-    code: `<div className="relative h-full w-full bg-slate-950">
-  <div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px]"></div>
-</div>`,
+    code: `import React from "react";
+
+const BlueGridBackground = () => {
+  return (
+    <div className="relative h-full w-full bg-slate-950">
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px]"></div>
+    </div>
+  );
+};
+
+export default BlueGridBackground;`,
   },
   {
     name: "Space Background",
     Component: SpaceBg,
-    code: `<SpaceBg />`,
+    code: `import React, { useEffect, useState, useMemo } from "react";
+
+const Star = ({ star }) => (
+  <div
+    className="absolute rounded-full bg-white animate-pulse"
+    style={{
+      left: \`\${star.x}%\`,
+      top: \`\${star.y}%\`,
+      width: \`\${star.size}px\`,
+      height: \`\${star.size}px\`,
+      opacity: star.opacity,
+      animationDelay: \`\${star.twinkleDelay}s\`,
+      animationDuration: "3s",
+    }}
+  />
+);
+
+const ShootingStar = ({ delay, position }) => (
+  <div
+    className={\`absolute w-1 h-1 bg-white rounded-full animate-ping opacity-70\`}
+    style={{
+      animationDelay: \`\${delay}s\`,
+      animationDuration: "4s",
+      top: position.top,
+      left: position.left,
+    }}
+  />
+);
+
+const SpaceBackground = ({ children }) => {
+  const [stars, setStars] = useState([]);
+
+  useEffect(() => {
+    const generateStars = () => {
+      const starCount = 80;
+      const newStars = Array.from({ length: starCount }, (_, i) => ({
+        id: i,
+        x: Math.random() * 100,
+        y: Math.random() * 100,
+        size: Math.random() * 3 + 1,
+        opacity: Math.random() * 0.8 + 0.2,
+        twinkleDelay: Math.random() * 4,
+      }));
+
+      setStars(newStars);
+    };
+
+    generateStars();
+  }, []);
+
+  const shootingStars = useMemo(
+    () => [
+      { delay: 2, position: { top: "20%", left: "10%" } },
+      { delay: 6, position: { top: "40%", left: "80%" } },
+      { delay: 10, position: { top: "68%", left: "33%" } },
+    ],
+    []
+  );
+
+  return (
+    <div className="relative w-full h-full overflow-hidden">
+      <div className="absolute inset-0 bg-black"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-gray-900 via-black to-black"></div>
+      <div className="absolute inset-0">
+        {stars.map((star) => (
+          <Star key={star.id} star={star} />
+        ))}
+      </div>
+      <div className="absolute inset-0">
+        {shootingStars.map((shootingStar, index) => (
+          <ShootingStar
+            key={index}
+            delay={shootingStar.delay}
+            position={shootingStar.position}
+          />
+        ))}
+      </div>
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-900/40 via-transparent to-blue-900/40" />
+      <div className="relative z-10">{children}</div>
+    </div>
+  );
+};
+
+export default SpaceBackground;`,
   },
 ];
 
@@ -83,9 +197,9 @@ const Backgrounds = () => {
       <Header />
       {!activeBg && (
         <>
-          <main className="flex-1 p-4 sm:p-8 pt-24 relative z-10">
+          <main className="flex-1 p-4 sm:p-8 pt-28 relative z-10">
             <div className="max-w-7xl mx-auto">
-              <h1 className="text-4xl sm:text-5xl font-extrabold mb-8 sm:mb-10 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-blue-400 to-indigo-500 drop-shadow-lg text-center tracking-tight">
+              <h1 className="text-4xl sm:text-5xl font-extrabold mb-10 text-slate-100 drop-shadow-lg text-center tracking-tight">
                 Tailwind Backgrounds
               </h1>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
