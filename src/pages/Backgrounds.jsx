@@ -6,9 +6,8 @@ import WhiteGridBg from "../backgrounds/WhiteGridBg";
 import PurpleBg from "../backgrounds/PurpleBg";
 import BlueGridBg from "../backgrounds/BlueGridBg";
 import SpaceBg from "../backgrounds/SpaceBg";
-import CodeCard from "../components/CodeCard";
 import BgCards from "../comman/BgCard";
-// Import more backgrounds as you add them
+import CodeCard from "../components/CodeCard";
 
 const backgrounds = [
   {
@@ -43,9 +42,8 @@ const backgrounds = [
   {
     name: "Space Background",
     Component: SpaceBg,
-    code: `<SpaceBg />`, // SpaceBg is a complex animated background, so we just show the component usage
+    code: `<SpaceBg />`,
   },
-  // Add more backgrounds here as { name, Component, code }
 ];
 
 const Backgrounds = () => {
@@ -59,67 +57,101 @@ const Backgrounds = () => {
     setTimeout(() => setCopied(false), 1200);
   };
 
-  // Find the active background component
   const ActiveBgComponent = activeBg
     ? backgrounds.find((bg) => bg.name === activeBg)?.Component
     : null;
 
   return (
-    <div className="flex flex-col min-h-screen bg-neutral-950 relative">
-      {/* Render the selected background as a full-page background */}
+    <div
+      className={`flex flex-col min-h-screen relative ${
+        !activeBg ? "bg-neutral-950" : ""
+      }`}
+    >
       {ActiveBgComponent && (
-        <div className="fixed inset-0 w-full h-full z-0 pointer-events-none">
-          <ActiveBgComponent fullPage />
+        <div className="fixed inset-0 w-full h-full z-0">
+          <ActiveBgComponent />
         </div>
       )}
+      {activeBg && (
+        <button
+          onClick={() => setActiveBg(null)}
+          className="fixed top-24 right-6 bg-slate-800/80 text-white backdrop-blur-sm px-4 py-2 rounded-lg z-50 hover:bg-slate-700 transition-colors"
+        >
+          Close Preview
+        </button>
+      )}
       <Header />
-      <main className="flex-1 p-8 pt-24 flex flex-col items-center justify-center relative z-10">
-        <h1 className="text-5xl font-extrabold mb-10 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-blue-400 to-indigo-500 drop-shadow-lg text-center tracking-tight">
-          Tailwind Backgrounds
-        </h1>
-        <div className="w-full flex justify-center">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {backgrounds.map(({ name, Component, code }) => (
-              <BgCards
-                key={name}
-                title={name}
-                description={"Preview of " + name}
-                preview={
-                  <div className="w-full h-32 rounded-lg overflow-hidden flex items-center justify-center relative">
-                    <Component fullPage={false} />
-                  </div>
-                }
-                onPreview={() => setActiveBg(name)}
-                onCode={() => setCodeModal({ name, code })}
-              />
-            ))}
-          </div>
-        </div>
-        {codeModal && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60">
-            <div className="bg-neutral-900 rounded-lg shadow-lg p-6 max-w-lg w-full relative text-slate-100">
-              <h2 className="text-lg font-bold mb-2">{codeModal.name} Code</h2>
-              <CodeCard
-                code={codeModal.code}
-                filename={`${codeModal.name.replace(/ /g, "")}.jsx`}
-              />
+      {!activeBg && (
+        <>
+          <main className="flex-1 p-4 sm:p-8 pt-24 relative z-10">
+            <div className="max-w-7xl mx-auto">
+              <h1 className="text-4xl sm:text-5xl font-extrabold mb-8 sm:mb-10 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-blue-400 to-indigo-500 drop-shadow-lg text-center tracking-tight">
+                Tailwind Backgrounds
+              </h1>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {backgrounds.map(({ name, Component, code }) => (
+                  <BgCards
+                    key={name}
+                    title={name}
+                    preview={
+                      <div className="w-full h-full rounded-lg overflow-hidden flex items-center justify-center relative">
+                        <Component />
+                      </div>
+                    }
+                    onPreview={() => setActiveBg(name)}
+                    onCode={() => setCodeModal({ name, code })}
+                  />
+                ))}
+              </div>
+            </div>
+          </main>
+          <Footer />
+        </>
+      )}
+
+      {codeModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
+          <div className="bg-neutral-900 rounded-2xl shadow-2xl p-6 max-w-lg w-full relative text-slate-100 border border-blue-900/40">
+            <h2 className="text-xl font-bold mb-4 text-center text-slate-100">
+              {codeModal.name}
+            </h2>
+            <CodeCard code={codeModal.code} />
+            <div className="flex gap-4 mt-4 justify-center">
               <button
-                className="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 text-sm font-semibold mr-2"
+                className="px-5 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-semibold"
                 onClick={() => handleCopy(codeModal.code)}
               >
                 {copied ? "Copied!" : "Copy Code"}
               </button>
               <button
-                className="mt-4 px-4 py-2 bg-gray-700 text-white rounded hover:bg-gray-700 text-sm font-semibold"
+                className="px-5 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600 font-semibold"
                 onClick={() => setCodeModal(null)}
               >
                 Close
               </button>
             </div>
+            <button
+              onClick={() => setCodeModal(null)}
+              className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
           </div>
-        )}
-      </main>
-      <Footer />
+        </div>
+      )}
     </div>
   );
 };

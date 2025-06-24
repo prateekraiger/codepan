@@ -11,9 +11,11 @@
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
@@ -22,6 +24,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -39,4 +42,14 @@
 
 .read-the-docs {
   color: #888;
+}
+
+.glass-card {
+  /* Extra glassmorphism for cards */
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0%, rgba(30, 58, 138, 0.10) 100%);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+  backdrop-filter: blur(18px) saturate(120%);
+  -webkit-backdrop-filter: blur(18px) saturate(120%);
+  border-radius: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
 }

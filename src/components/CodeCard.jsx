@@ -27,7 +27,7 @@ const CodeCard = ({ code, filename = "Component.jsx", language = "jsx" }) => {
   };
 
   return (
-    <div className="relative rounded-xl bg-white/5 backdrop-blur-md shadow-2xl border border-blue-900/40 border-t border-gray-700/60 max-w-full w-full sm:w-[95vw] md:w-[700px] mx-auto my-6 overflow-hidden transition-transform hover:scale-[1.015] glass-code">
+    <div className="relative rounded-2xl bg-gradient-to-br from-white/20 via-white/10 to-blue-200/10 dark:from-white/10 dark:via-slate-900/30 dark:to-blue-900/10 backdrop-blur-xl shadow-2xl border border-blue-900/40 border-t border-gray-700/60 max-w-full w-full sm:w-[95vw] md:w-[700px] mx-auto my-6 overflow-hidden transition-transform hover:scale-[1.015] glass-card p-2 sm:p-4">
       <style>{customPrismOverrides}</style>
       {/* Header Bar */}
       <div className="flex items-center justify-between px-4 py-2 bg-slate-800/80 border-b border-slate-700/60 backdrop-blur-sm">
