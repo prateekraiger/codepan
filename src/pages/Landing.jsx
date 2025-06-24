@@ -9,6 +9,7 @@ import {
   Palette,
   Download,
 } from "lucide-react";
+import Logo from "../comman/Logo";
 
 const FloatingParticle = ({ delay = 0, duration = 20 }) => (
   <div
@@ -211,19 +212,9 @@ const Landing = () => {
             }`}
           >
             <div className="inline-flex items-center gap-3 mb-4">
-              <div className="relative">
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-2xl shadow-blue-500/25">
-                  <Code className="w-8 h-8 text-white" />
-                </div>
-                <div className="absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-br from-pink-500 to-rose-500 rounded-full flex items-center justify-center">
-                  <Layers className="w-3 h-3 text-white" />
-                </div>
-                {/* Pulsing ring */}
-                <div className="absolute inset-0 rounded-2xl bg-blue-500/20 animate-ping" />
+              <div className="scale-[2] md:scale-[2.5]">
+                <Logo />
               </div>
-              <h1 className="text-5xl md:text-6xl font-black bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent">
-                Codepan
-              </h1>
             </div>
           </div>
 
@@ -244,12 +235,6 @@ const Landing = () => {
                 Inspire.
               </span>
             </h2>
-            <p className="text-2xl md:text-3xl text-gray-300 font-light max-w-4xl mx-auto leading-relaxed">
-              The most beautiful React component library powered by{" "}
-              <span className="text-blue-400 font-semibold">Tailwind CSS</span>{" "}
-              and{" "}
-              <span className="text-purple-400 font-semibold">shadcn/ui</span>
-            </p>
           </div>
 
           {/* CTA Buttons */}

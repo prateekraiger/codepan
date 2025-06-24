@@ -2,22 +2,7 @@ import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { Menu, X, Code, Layers } from "lucide-react";
-
-const CodepanLogo = () => (
-  <div className="flex items-center gap-2">
-    <div className="relative">
-      <div className="w-8 h-8 bg-gradient-to-br from-blue-400 to-blue-600 rounded-lg flex items-center justify-center shadow-lg">
-        <Code className="w-5 h-5 text-white" />
-      </div>
-      <div className="absolute -top-1 -right-1 w-3 h-3 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full">
-        <Layers className="w-2 h-2 text-white ml-0.5 mt-0.5" />
-      </div>
-    </div>
-    <span className="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-      Codepan
-    </span>
-  </div>
-);
+import Logo from "../comman/Logo";
 
 const Header = ({ showSidebarTrigger = false }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -67,7 +52,7 @@ const Header = ({ showSidebarTrigger = false }) => {
             to="/"
             className="hover:scale-105 transition-transform duration-200"
           >
-            <CodepanLogo />
+            <Logo />
           </Link>
 
           <div className="hidden sm:block">
