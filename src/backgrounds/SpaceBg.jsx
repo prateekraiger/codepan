@@ -27,7 +27,7 @@ const ShootingStar = ({ delay, position }) => (
   />
 );
 
-const SpaceBg = ({ children, fullPage = false }) => {
+const SpaceBg = ({ children }) => {
   const [stars, setStars] = useState([]);
   const [shootingStarsState, setShootingStarsState] = useState([]);
 
@@ -59,16 +59,10 @@ const SpaceBg = ({ children, fullPage = false }) => {
   );
 
   return (
-    <div
-      className={
-        fullPage
-          ? "fixed inset-0 w-full h-full z-10"
-          : "w-full h-32 rounded-lg overflow-hidden relative"
-      }
-    >
+    <div className="relative w-full h-full overflow-hidden">
       {/* Deep space background with subtle gradient */}
-      <div className="absolute inset-0 -z-10 bg-black"></div>
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-gray-900 via-black to-black opacity-60"></div>
+      <div className="absolute inset-0 bg-black"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-gray-900 via-black to-black"></div>
 
       {/* Stars Layer */}
       <div className="absolute inset-0">
@@ -89,7 +83,7 @@ const SpaceBg = ({ children, fullPage = false }) => {
       </div>
 
       {/* Nebula Effect - Subtle gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-900/10 via-transparent to-blue-900/10" />
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-900/40 via-transparent to-blue-900/40" />
 
       {/* Content Layer */}
       <div className="relative z-10">{children}</div>

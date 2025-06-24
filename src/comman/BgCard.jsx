@@ -1,32 +1,23 @@
 // BgCards.jsx
 import React from "react";
 
-const BgCards = ({
-  title,
-  description,
-  preview,
-  onPreview,
-  onCode,
-  children,
-}) => {
+const BgCards = ({ title, preview, onPreview, onCode }) => {
   return (
-    <div className="relative w-96 h-64 bg-white rounded-2xl shadow-lg overflow-hidden transition-transform duration-500 ease-in-out transform hover:-translate-y-2 hover:shadow-2xl border border-white/20 flex flex-col">
-      <div className="w-full h-32 flex items-center justify-center bg-white">
-        {preview}
-      </div>
-      <div className="p-4 flex flex-col flex-1">
-        <h3 className="text-gray-800 text-lg font-bold mb-1">{title}</h3>
-        <p className="text-gray-600 text-sm mb-2 flex-1">{description}</p>
-        {children}
-        <div className="mt-2 flex gap-2">
+    <div className="glass-card rounded-2xl overflow-hidden flex flex-col h-full">
+      <div className="flex-grow h-48 relative">{preview}</div>
+      <div className="p-4 bg-slate-900/50">
+        <h3 className="text-slate-200 text-lg font-bold mb-3 text-center">
+          {title}
+        </h3>
+        <div className="flex gap-3 justify-center">
           <button
-            className="px-4 py-1 bg-blue-500 text-white rounded text-xs hover:bg-blue-600 font-semibold"
+            className="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm hover:bg-blue-700 font-semibold transition-colors w-full"
             onClick={onPreview}
           >
             Preview
           </button>
           <button
-            className="px-4 py-1 bg-gray-700 text-white rounded text-xs hover:bg-gray-900 font-semibold"
+            className="px-4 py-2 bg-gray-700 text-white rounded-lg text-sm hover:bg-gray-600 font-semibold transition-colors w-full"
             onClick={onCode}
           >
             Code
