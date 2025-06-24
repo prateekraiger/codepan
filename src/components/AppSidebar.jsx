@@ -108,7 +108,17 @@ const AppSidebar = ({ selected, setSelected }) => {
             </div>
             {openGroups.cards && (
               <SidebarGroupContent>
-                {/* Add card menu items here later */}
+                <SidebarMenu>
+                  <SidebarMenuItem>
+                    <SidebarMenuButton
+                      isActive={selected === "samplecard"}
+                      onClick={() => setSelected("samplecard")}
+                    >
+                      <Square className="mr-2 w-4 h-4" />
+                      Sample Card
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                </SidebarMenu>
               </SidebarGroupContent>
             )}
           </SidebarGroup>

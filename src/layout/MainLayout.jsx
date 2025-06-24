@@ -7,6 +7,7 @@ import Button from "../context/Buttons/Button";
 import CodeCard from "../components/CodeCard";
 import ThanosButton from "../context/Buttons/ThanosButton";
 import Background from "../backgrounds/Background";
+import SampleCard from "../context/cards/SampleCard";
 
 const COMPONENTS = {
   button: {
@@ -23,6 +24,18 @@ import { ThanosSnapEffect } from "../../components/thanos-snap-effect";
 export default function ThanosButton() {
   return (
     <div className=\"text-white\">\n      <ThanosSnapEffect>\n        <button className=\"inline-flex items-center justify-center whitespace-nowrap rounded-lg text-sm font-medium transition-colors outline-offset-2 focus-visible:outline-2 focus-visible:outline-ring/70 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 bg-primary text-primary-foreground shadow-sm shadow-black/5 hover:bg-primary/90 h-9 px-4 py-2 gap-2\">\n          <Trash2 size={16} strokeWidth={2} />\n          Click to delete\n        </button>\n      </ThanosSnapEffect>\n    </div>\n  );\n}`,
+  },
+  samplecard: {
+    name: "Sample Card",
+    preview: <SampleCard title="Hover Me : )" />,
+    code: `import React from "react";
+
+const SampleCard = ({
+  title = "Hover Me : )",
+  gradientColors = ["from-yellow-400", "to-pink-600"],
+}) => {
+  return (
+    <div className=\"relative w-48 h-64 group cursor-pointer transition-all duration-500 hover:-translate-y-5\">\n      {/* Gradient Background with Blur Effect */}\n      <div\n        className=\"absolute inset-0 bg-gradient-to-br from-yellow-400 to-pink-600 rounded-2xl\"\n      ></div>\n      <div\n        className=\"absolute inset-0 bg-gradient-to-br from-yellow-400 to-pink-600 rounded-2xl opacity-80 blur-xl group-hover:opacity-100 transition-opacity duration-300\"\n      ></div>\n\n      {/* Inner Card with Semi-Transparent Background */}\n      <div className=\"absolute inset-1.5 bg-black/60 rounded-xl z-10 overflow-hidden\">\n        {/* Animated Left Highlight */}\n        <div className=\"absolute inset-y-0 left-0 w-1/2 bg-white/10 backdrop-blur-sm transition-all duration-300 group-hover:w-2/3\"></div>\n\n        {/* Content */}\n        <div className=\"relative h-full w-full z-20 flex items-center justify-center p-4\">\n          <div className=\"text-white text-xl font-bold tracking-wide group-hover:scale-110 transition-transform duration-300\">\n            {title}\n          </div>\n        </div>\n      </div>\n    </div>\n  );\n};\n\nexport default SampleCard;`,
   },
   // Add more components here
 };
