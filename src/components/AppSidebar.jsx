@@ -139,7 +139,32 @@ const AppSidebar = ({ selected, setSelected }) => {
             </div>
             {openGroups.loaders && (
               <SidebarGroupContent>
-                {/* Add loader menu items here later */}
+                <SidebarMenu>
+                  <SidebarMenuItem>
+                    <SidebarMenuButton
+                      isActive={selected === "loader1"}
+                      onClick={() => setSelected("loader1")}
+                    >
+                      Loader 1
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                  <SidebarMenuItem>
+                    <SidebarMenuButton
+                      isActive={selected === "loader2"}
+                      onClick={() => setSelected("loader2")}
+                    >
+                      Loader 2
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                  <SidebarMenuItem>
+                    <SidebarMenuButton
+                      isActive={selected === "loader3"}
+                      onClick={() => setSelected("loader3")}
+                    >
+                      Loader 3
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                </SidebarMenu>
               </SidebarGroupContent>
             )}
           </SidebarGroup>

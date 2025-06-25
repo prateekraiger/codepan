@@ -8,6 +8,9 @@ import CodeCard from "../components/CodeCard";
 import ThanosButton from "../context/Buttons/ThanosButton";
 import Background from "../backgrounds/Background";
 import SampleCard from "../context/cards/SampleCard";
+import Loader1 from "../context/Loaders/Loader1";
+import Loader2 from "../context/Loaders/Loader2";
+import Loader3 from "../context/Loaders/Loader3";
 
 const COMPONENTS = {
   button: {
@@ -37,6 +40,21 @@ const SampleCard = ({
   return (
     <div className=\"relative w-48 h-64 group cursor-pointer transition-all duration-500 hover:-translate-y-5\">\n      {/* Gradient Background with Blur Effect */}\n      <div\n        className=\"absolute inset-0 bg-gradient-to-br from-yellow-400 to-pink-600 rounded-2xl\"\n      ></div>\n      <div\n        className=\"absolute inset-0 bg-gradient-to-br from-yellow-400 to-pink-600 rounded-2xl opacity-80 blur-xl group-hover:opacity-100 transition-opacity duration-300\"\n      ></div>\n\n      {/* Inner Card with Semi-Transparent Background */}\n      <div className=\"absolute inset-1.5 bg-black/60 rounded-xl z-10 overflow-hidden\">\n        {/* Animated Left Highlight */}\n        <div className=\"absolute inset-y-0 left-0 w-1/2 bg-white/10 backdrop-blur-sm transition-all duration-300 group-hover:w-2/3\"></div>\n\n        {/* Content */}\n        <div className=\"relative h-full w-full z-20 flex items-center justify-center p-4\">\n          <div className=\"text-white text-xl font-bold tracking-wide group-hover:scale-110 transition-transform duration-300\">\n            {title}\n          </div>\n        </div>\n      </div>\n    </div>\n  );\n};\n\nexport default SampleCard;`,
   },
+  loader1: {
+    name: "Loader 1",
+    preview: <Loader1 />,
+    code: `See src/context/Loaders/Loader1.jsx for code.`,
+  },
+  loader2: {
+    name: "Loader 2",
+    preview: <Loader2 />,
+    code: `See src/context/Loaders/Loader2.jsx for code.`,
+  },
+  loader3: {
+    name: "Loader 3",
+    preview: <Loader3 />,
+    code: `See src/context/Loaders/Loader3.jsx for code.`,
+  },
   // Add more components here
 };
 
@@ -52,7 +70,9 @@ const MainLayout = () => {
           <Header showSidebarTrigger={true} />
           <div className="flex flex-1 flex-col md:flex-row pt-16">
             <AppSidebar selected={selected} setSelected={setSelected} />
-            <main className="flex-1 md:ml-64 p-2 sm:p-4 md:p-6 transition-all flex flex-col items-center w-full">
+            <main
+              className={`flex-1 md:ml-64 p-2 sm:p-4 md:p-6 transition-all flex flex-col items-center w-full transition-opacity duration-300`}
+            >
               <h1 className="text-2xl sm:text-3xl font-bold mb-4 text-slate-100 text-center w-full">
                 {comp.name}
               </h1>
