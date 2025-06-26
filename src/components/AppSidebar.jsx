@@ -16,9 +16,9 @@ import { Square, Zap, ChevronDown, ChevronRight } from "lucide-react";
 const groups = [
   { key: "buttons", label: "Buttons" },
   { key: "cards", label: "Cards" },
+  { key: "text", label: "Text Animations" },
   { key: "loaders", label: "Loaders" },
   { key: "forms", label: "Forms" },
-  { key: "text", label: "Text Animations" },
   { key: "cursors", label: "Cursors" },
 ];
 
@@ -122,6 +122,29 @@ const AppSidebar = ({ selected, setSelected }) => {
               </SidebarGroupContent>
             )}
           </SidebarGroup>
+          {/* Text Animations Group */}
+          <SidebarGroup>
+            <div
+              className="flex items-center justify-between px-4 py-2 font-bold text-base border-b border-gray-700 cursor-pointer select-none"
+              onClick={() => toggleGroup("text")}
+            >
+              <SidebarGroupLabel className="p-0 m-0">
+                Text Animations
+              </SidebarGroupLabel>
+              <SidebarGroupAction asChild>
+                {openGroups.text ? (
+                  <ChevronDown className="w-4 h-4" />
+                ) : (
+                  <ChevronRight className="w-4 h-4" />
+                )}
+              </SidebarGroupAction>
+            </div>
+            {openGroups.text && (
+              <SidebarGroupContent>
+                {/* Add text animation menu items here later */}
+              </SidebarGroupContent>
+            )}
+          </SidebarGroup>
           {/* Loaders Group */}
           <SidebarGroup>
             <div
@@ -185,30 +208,16 @@ const AppSidebar = ({ selected, setSelected }) => {
             </div>
             {openGroups.forms && (
               <SidebarGroupContent>
-                {/* Add form menu items here later */}
-              </SidebarGroupContent>
-            )}
-          </SidebarGroup>
-          {/* Text Animations Group */}
-          <SidebarGroup>
-            <div
-              className="flex items-center justify-between px-4 py-2 font-bold text-base border-b border-gray-700 cursor-pointer select-none"
-              onClick={() => toggleGroup("text")}
-            >
-              <SidebarGroupLabel className="p-0 m-0">
-                Text Animations
-              </SidebarGroupLabel>
-              <SidebarGroupAction asChild>
-                {openGroups.text ? (
-                  <ChevronDown className="w-4 h-4" />
-                ) : (
-                  <ChevronRight className="w-4 h-4" />
-                )}
-              </SidebarGroupAction>
-            </div>
-            {openGroups.text && (
-              <SidebarGroupContent>
-                {/* Add text animation menu items here later */}
+                <SidebarMenu>
+                  <SidebarMenuItem>
+                    <SidebarMenuButton
+                      isActive={selected === "form1"}
+                      onClick={() => setSelected("form1")}
+                    >
+                      Sample Form
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                </SidebarMenu>
               </SidebarGroupContent>
             )}
           </SidebarGroup>

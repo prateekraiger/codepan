@@ -58,6 +58,52 @@ const SampleCard = ({
     preview: <Loader3 />,
     code: loader3Code,
   },
+  form1: {
+    name: "Sample Form",
+    preview: (
+      <form className="flex flex-col gap-4 w-full max-w-xs mx-auto p-4 bg-white/10 rounded-xl border border-gray-700">
+        <label className="flex flex-col gap-1 text-left">
+          <span className="text-sm text-gray-300">Email</span>
+          <input
+            type="email"
+            className="px-3 py-2 rounded bg-gray-900 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            placeholder="you@example.com"
+          />
+        </label>
+        <label className="flex flex-col gap-1 text-left">
+          <span className="text-sm text-gray-300">Password</span>
+          <input
+            type="password"
+            className="px-3 py-2 rounded bg-gray-900 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            placeholder="••••••••"
+          />
+        </label>
+        <button
+          type="submit"
+          className="bg-blue-600 text-white rounded px-4 py-2 hover:bg-blue-700 transition-colors"
+        >
+          Sign In
+        </button>
+      </form>
+    ),
+    code: `import React from "react";
+
+const SampleForm = () => (
+  <form className="flex flex-col gap-4 w-full max-w-xs mx-auto p-4 bg-white/10 rounded-xl border border-gray-700">
+    <label className="flex flex-col gap-1 text-left">
+      <span className="text-sm text-gray-300">Email</span>
+      <input type="email" className="px-3 py-2 rounded bg-gray-900 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder="you@example.com" />
+    </label>
+    <label className="flex flex-col gap-1 text-left">
+      <span className="text-sm text-gray-300">Password</span>
+      <input type="password" className="px-3 py-2 rounded bg-gray-900 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder="••••••••" />
+    </label>
+    <button type="submit" className="bg-blue-600 text-white rounded px-4 py-2 hover:bg-blue-700 transition-colors">Sign In</button>
+  </form>
+);
+
+export default SampleForm;`,
+  },
   // Add more components here
 };
 
