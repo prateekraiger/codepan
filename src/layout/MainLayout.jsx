@@ -11,6 +11,9 @@ import SampleCard from "../context/cards/SampleCard";
 import Loader1 from "../context/Loaders/Loader1";
 import Loader2 from "../context/Loaders/Loader2";
 import Loader3 from "../context/Loaders/Loader3";
+import loader1Code from "../context/Loaders/Loader1.jsx?raw";
+import loader2Code from "../context/Loaders/Loader2.jsx?raw";
+import loader3Code from "../context/Loaders/Loader3.jsx?raw";
 
 const COMPONENTS = {
   button: {
@@ -43,17 +46,17 @@ const SampleCard = ({
   loader1: {
     name: "Loader 1",
     preview: <Loader1 />,
-    code: `See src/context/Loaders/Loader1.jsx for code.`,
+    code: loader1Code,
   },
   loader2: {
     name: "Loader 2",
     preview: <Loader2 />,
-    code: `See src/context/Loaders/Loader2.jsx for code.`,
+    code: loader2Code,
   },
   loader3: {
     name: "Loader 3",
     preview: <Loader3 />,
-    code: `See src/context/Loaders/Loader3.jsx for code.`,
+    code: loader3Code,
   },
   // Add more components here
 };
